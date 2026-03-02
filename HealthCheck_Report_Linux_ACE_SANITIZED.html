@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health check report for Non-Prod OEM 24ai Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .table-container {
+            max-width: 80%; /* Ensures table fits the screen width */
+            overflow-x: auto; /* Adds horizontal scrolling for wide tables */
+        }
+        table {
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin: auto;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr.low {
+            background-color: white; /* White */
+        }
+        tr.warning {
+            background-color: #e0ff33; /* Yellow */
+        }
+        tr.critical {
+            background-color: #ffa533; /* Orange */
+        }
+        tr.head {
+            background-color: #808B96; /* Gray */
+        }
+        tr.ok {
+            background-color: #90EE90; /* Light Green */
+        }
+        tr.normal {
+            background-color: white; /* White for normal ASM usage */
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Health check report for Non-Prod OEM 24ai Linux</h1>
+<h2 style="text-align: center;">ASM USAGE</h2>
+<table>
+    <tr class="head">
+        <th>TARGET Server</th>
+        <th>DISKGROUP</th>
+        <th>TOTAL_GB</th>
+        <th>FREE_GB</th>
+        <th>USED%</th>
+    </tr>
+<tr class="normal"><td>++ASM_oem-host-41.example.com</td><td>FRA</td><td>100</td><td>49.53</td><td>50.47%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-41.example.com</td><td>DATA</td><td>999.98</td><td>881.95</td><td>11.8%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-21.example.com</td><td>FRA</td><td>199.99</td><td>198.99</td><td>.5%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-21.example.com</td><td>DATA</td><td>1249.98</td><td>439.86</td><td>64.81%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-33.example.com</td><td>DATA</td><td>1199.98</td><td>328.04</td><td>72.66%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-33.example.com</td><td>FRA</td><td>50</td><td>49.32</td><td>1.35%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-17.example.com</td><td>FRA</td><td>100</td><td>89.84</td><td>10.15%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-17.example.com</td><td>DATA</td><td>1199.98</td><td>203.66</td><td>83.03%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-09.example.com</td><td>FRA</td><td>100</td><td>96.32</td><td>3.68%</td></tr>
+<tr class="critical"><td>++ASM_oem-host-09.example.com</td><td>DATA</td><td>12499.9</td><td>945.3</td><td>92.44%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-15.example.com</td><td>FRA</td><td>100</td><td>98.9</td><td>1.1%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-15.example.com</td><td>DATA</td><td>8999.93</td><td>7342.99</td><td>18.41%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-21.example.com</td><td>FRA</td><td>100</td><td>76.87</td><td>23.13%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-21.example.com</td><td>DATA</td><td>2599.88</td><td>1400.39</td><td>46.14%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-10.example.com</td><td>DATA</td><td>99.99</td><td>95.02</td><td>4.97%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-10.example.com</td><td>FRA</td><td>100</td><td>99.32</td><td>.68%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-14.example.com</td><td>FRA</td><td>100</td><td>80.91</td><td>19.08%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-14.example.com</td><td>DATA</td><td>599.99</td><td>597.77</td><td>.37%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-43.example.com</td><td>DATA</td><td>599.99</td><td>368.53</td><td>38.58%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-43.example.com</td><td>FRA</td><td>100</td><td>99.17</td><td>.82%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-23.example.com</td><td>DATA</td><td>299.99</td><td>261.51</td><td>12.83%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-23.example.com</td><td>FRA</td><td>100</td><td>98.85</td><td>1.15%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-47.example.com</td><td>DATA</td><td>499.99</td><td>495.29</td><td>.94%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-47.example.com</td><td>FRA</td><td>100</td><td>94.28</td><td>5.72%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-17.example.com</td><td>FRA</td><td>50</td><td>48.46</td><td>3.09%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-17.example.com</td><td>DATA</td><td>149.99</td><td>62.71</td><td>58.19%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-29.example.com</td><td>FRA</td><td>299.99</td><td>244.62</td><td>18.46%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-29.example.com</td><td>DATA</td><td>4224.94</td><td>682.54</td><td>83.85%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-04.example.com</td><td>DATA</td><td>3899.95</td><td>793.59</td><td>79.65%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-04.example.com</td><td>FRA</td><td>300</td><td>299.06</td><td>.31%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-25.example.com</td><td>DATA</td><td>1399.98</td><td>909.21</td><td>35.06%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-25.example.com</td><td>FRA</td><td>100</td><td>99.28</td><td>.72%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-24.example.com</td><td>FRA</td><td>100</td><td>97.39</td><td>2.6%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-24.example.com</td><td>DATA</td><td>1999.98</td><td>1504.08</td><td>24.8%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-05.example.com</td><td>DATA</td><td>299.99</td><td>70.18</td><td>76.61%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-05.example.com</td><td>FRA</td><td>50</td><td>49.33</td><td>1.33%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-09.example.com</td><td>FRA</td><td>100</td><td>99.33</td><td>.67%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-09.example.com</td><td>DATA</td><td>199.99</td><td>90.74</td><td>54.63%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-18.example.com</td><td>DATA</td><td>199.99</td><td>90.77</td><td>54.61%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-18.example.com</td><td>FRA</td><td>100</td><td>92.25</td><td>7.75%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-16.example.com</td><td>DATA</td><td>599.99</td><td>218.37</td><td>63.61%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-16.example.com</td><td>FRA</td><td>50</td><td>48.71</td><td>2.59%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-11.example.com</td><td>DATA</td><td>1999.98</td><td>668.58</td><td>66.57%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-11.example.com</td><td>FRA</td><td>250</td><td>247.8</td><td>.88%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-22.example.com</td><td>DATA</td><td>549.99</td><td>504.78</td><td>8.22%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-22.example.com</td><td>FRA</td><td>200</td><td>198.5</td><td>.75%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-23.example.com</td><td>FRA</td><td>100</td><td>99.04</td><td>.96%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-23.example.com</td><td>DATA</td><td>3299.95</td><td>647.91</td><td>80.37%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-13.example.com</td><td>DATA</td><td>599.99</td><td>115.71</td><td>80.72%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-13.example.com</td><td>FRA</td><td>100</td><td>99.74</td><td>.26%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-12.example.com</td><td>DATA</td><td>13499.89</td><td>4622.06</td><td>65.76%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-12.example.com</td><td>FRA</td><td>250</td><td>233.91</td><td>6.44%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-39.example.com</td><td>DATA</td><td>2499.98</td><td>1636.15</td><td>34.55%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-39.example.com</td><td>FRA</td><td>999.99</td><td>993.99</td><td>.6%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-03.example.com</td><td>FRA</td><td>50</td><td>47.15</td><td>5.69%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-03.example.com</td><td>DATA</td><td>199.99</td><td>54.62</td><td>72.69%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-13.example.com</td><td>DATA</td><td>99.99</td><td>75.37</td><td>24.63%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-13.example.com</td><td>FRA</td><td>100</td><td>75.71</td><td>24.29%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-15.example.com</td><td>DATA</td><td>1499.96</td><td>746.47</td><td>50.23%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-15.example.com</td><td>FRA</td><td>100</td><td>91.04</td><td>8.96%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-45.example.com</td><td>DATA</td><td>599.98</td><td>589.34</td><td>1.77%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-45.example.com</td><td>FRA</td><td>100</td><td>99.28</td><td>.72%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-11.example.com</td><td>FRA</td><td>100</td><td>91.88</td><td>8.12%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-11.example.com</td><td>DATA</td><td>1249.98</td><td>352.3</td><td>71.82%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-31.example.com</td><td>DATA</td><td>99.99</td><td>84.53</td><td>15.46%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-31.example.com</td><td>FRA</td><td>50</td><td>47.14</td><td>5.73%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-01.example.com</td><td>DATA</td><td>1099.96</td><td>292.84</td><td>73.38%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-01.example.com</td><td>FRA</td><td>50</td><td>49.3</td><td>1.4%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-35.example.com</td><td>DATA</td><td>1399.98</td><td>308.02</td><td>78%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-35.example.com</td><td>FRA</td><td>200</td><td>189.84</td><td>5.08%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-08.example.com</td><td>FRA</td><td>200</td><td>189.91</td><td>5.04%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-08.example.com</td><td>DATA</td><td>3149.96</td><td>851.09</td><td>72.98%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-25.example.com</td><td>FRA</td><td>100</td><td>99.33</td><td>.67%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-25.example.com</td><td>DATA</td><td>299.99</td><td>285.49</td><td>4.84%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-27.example.com</td><td>DATA</td><td>599.99</td><td>494.23</td><td>17.63%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-27.example.com</td><td>FRA</td><td>100</td><td>99.33</td><td>.67%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-03.example.com</td><td>DATA</td><td>199.99</td><td>103.43</td><td>48.29%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-03.example.com</td><td>FRA</td><td>50</td><td>49.33</td><td>1.33%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-19.example.com</td><td>DATA</td><td>149.99</td><td>145.02</td><td>3.32%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-19.example.com</td><td>FRA</td><td>100</td><td>99.33</td><td>.67%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-01.example.com</td><td>DATA</td><td>599.98</td><td>250.35</td><td>58.27%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-01.example.com</td><td>FRA</td><td>50</td><td>48.72</td><td>2.55%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-07.example.com</td><td>FRA</td><td>50</td><td>49.27</td><td>1.46%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-07.example.com</td><td>DATA</td><td>99.99</td><td>85.94</td><td>14.05%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-02.example.com</td><td>DATA</td><td>4699.94</td><td>688.46</td><td>85.35%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-02.example.com</td><td>FRA</td><td>600</td><td>595.84</td><td>.69%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-20.example.com</td><td>DATA</td><td>1499.98</td><td>410.4</td><td>72.64%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-20.example.com</td><td>FRA</td><td>100</td><td>99.32</td><td>.68%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-37.example.com</td><td>DATA</td><td>199.99</td><td>175.08</td><td>12.46%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-37.example.com</td><td>FRA</td><td>100</td><td>99.33</td><td>.67%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-19.example.com</td><td>FRA</td><td>100</td><td>91.19</td><td>8.81%</td></tr>
+<tr class="warning"><td>++ASM_oem-host-19.example.com</td><td>DATA</td><td>799.96</td><td>160.2</td><td>79.98%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-05.example.com</td><td>FRA</td><td>50</td><td>49.33</td><td>1.33%</td></tr>
+<tr class="normal"><td>++ASM_oem-host-05.example.com</td><td>DATA</td><td>99.99</td><td>93.08</td><td>6.92%</td></tr>
+</table>
+<h2 style="text-align: center;">Tablespace Report - Need Attention </h2>
+<table>
+    <tr class="head">
+        <th>TARGET DB</th>
+        <th>TARGET Server</th>
+        <th>Tablespace (% Used)</th>
+    </tr>
+<tr class="critical"><td>DB001</td><td>oem-host-47.example.com</td><td>TS006(94.27%), TS110(94.05%), TS109(93.68%), TS042(88.07%), TS133(85.9%)</td></tr>
+<tr class="critical"><td>DB002</td><td>oem-host-25.example.com</td><td>TS133(99.65%), TS007(94.67%), TS045(94.25%), TS110(94.25%), TS006(93.96%), TS042(91.86%), TS109(91.39%
+), TS132(90.27%), TS044(88.52%), TS043(88.03%), TS106(86.88%)</td></tr>
+
+<tr class="critical"><td>DB003</td><td>oem-host-39.example.com</td><td>TS133(90.36%), TS012(86.5%)</td></tr>
+<tr class="critical"><td>DB005</td><td>oem-host-21.example.com</td><td>TS077(95.24%), TS074(95.11%), TS062(95.03%), TS072(94.85%), TS068(94.12%), IX_SPC_FI
+TS144(93.87%), TS075(93.81%), TS132(93.33%), TS070(93.27%), TS076(93.27%), TS066(92.64%), TS071(92%)</td></tr>
+
+<tr class="critical"><td>DB010</td><td>oem-host-18.example.com</td><td>TS133(99.77%), TS142(95.14%), TS048(95.08%), TS095(92.8%), TS132(92.18%), TS046(90.46%)</td></tr>
+<tr class="critical"><td>DB011</td><td>oem-host-19.example.com</td><td>TS051(95.24%), TS061(95.24%), TS125(95.23%), TS131(95.22%), TS126(95.19%), TS048(95.14%), DFRPT_DAT
+A(95.13%), TS050(95.13%), TS049(94.98%), TS133(87.6%), TS132(85.89%), TS142(85.53%)</td></tr>
+
+<tr class="ok"><td>DB016</td><td>oem-host-44.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="critical"><td>DB017</td><td>oem-host-20.example.com</td><td>TS133(99.75%), TS132(92.46%)</td></tr>
+<tr class="critical"><td>DB004</td><td>oem-host-29.example.com</td><td>TS133(98.4%), TS142(95.24%), TS063(94.44%), TS143(90.24%)</td></tr>
+<tr class="critical"><td>DB018</td><td>oem-host-49.example.com</td><td>TS132(94.15%), TS133(92.29%), TS143(90.81%)</td></tr>
+<tr class="critical"><td>DB019</td><td>oem-host-28.example.com</td><td>TS133(99.73%), TS142(95.05%), TS132(93.46%)</td></tr>
+<tr class="critical"><td>DB020</td><td>oem-host-07.example.com</td><td>TS133(99.81%), TS132(93.27%)</td></tr>
+<tr class="critical"><td>DB021</td><td>oem-host-36.example.com</td><td>TS133(99.35%), TS053(95.13%), TS132(92.89%)</td></tr>
+<tr class="critical"><td>DB022</td><td>oem-host-02.example.com</td><td>TS054(99.63%), TS008(99.53%), TS055(98.52%), TS004(97.76%), TS101(95.33%), TS132(95.23%), TS002(95.14%), TS112(94.79%), G
+TS082(93.99%), TS052(93.97%), TS056(86.9%), TS142(85.57%), TS003(85.5%), TS108(85.29%)</td></tr>
+
+<tr class="critical"><td>DB023</td><td>oem-host-35.example.com</td><td>TS008(99.82%), TS054(99.05%), TS002(96.45%), TS057(96.39%), TS052(95.22%), TS055(94.67%), TS141(93.26%), TS142(87.93%),
+TS107(85.39%)</td></tr>
+
+<tr class="critical"><td>DB024</td><td>oem-host-12.example.com</td><td>TS064(99.54%), TS008(99.34%), TS054(98.81%), TS059(97.75%), TS004(97.7%), TS002(97.44%), TS133(96.73%), TS055(96.53%), EXLA
+TS116(95.67%), TS112(94.54%), TS132(94.12%), TS141(93.55%), TS057(92.57%), TS107(89.79%), TS114(88.9%), TS142(88.45%)</td></tr>
+
+<tr class="critical"><td>DB025</td><td>oem-host-03.example.com</td><td>TS008(99.8%), TS064(99.65%), TS004(99.09%), TS054(98.14%), TS002(97.46%), TS101(96.11%), TS055(95.62%), TS112(95.23%), G
+TS082(94.35%), TS052(94%), TS142(88.45%), TS107(87.6%), TS141(87.01%)</td></tr>
+
+<tr class="critical"><td>DB026</td><td>oem-host-27.example.com</td><td>TS008(99.7%), TS064(99.36%), TS054(96.9%), TS002(96.6%), TS112(94.8%), TS057(94.34%), TS055(94.13%), TS111(89.11%), U
+TS127(88.45%), TS107(87.33%)</td></tr>
+
+<tr class="critical"><td>DB027</td><td>oem-host-30.example.com</td><td>TS133(98.82%), TS132(91.13%), TS142(86.25%)</td></tr>
+<tr class="critical"><td>DB028</td><td>oem-host-50.example.com</td><td>TS133(98.61%), TS132(93.52%)</td></tr>
+<tr class="critical"><td>DB030</td><td>oem-host-14.example.com</td><td>TS133(99.88%), TS060(96.51%), TS142(95.23%)</td></tr>
+<tr class="critical"><td>DB031</td><td>oem-host-13.example.com</td><td>TS133(98.64%), TS132(94.63%)</td></tr>
+<tr class="critical"><td>DB032</td><td>oem-host-38.example.com</td><td>TS133(99.26%), TS132(94.7%)</td></tr>
+<tr class="critical"><td>DB033</td><td>oem-host-34.example.com</td><td>TS133(99.26%), TS140(97.79%), TS139(97.2%), TS132(93.5%)</td></tr>
+<tr class="warning"><td>DB035</td><td>oem-host-22.example.com</td><td>TS132(87.98%)</td></tr>
+<tr class="critical"><td>DB036</td><td>oem-host-46.example.com</td><td>TS133(99.32%), TS132(94.81%), TS001(87.71%)</td></tr>
+<tr class="critical"><td>DB037</td><td>oem-host-48.example.com</td><td>TS078(95.21%), TS081(95.02%), TS115(94.47%), TS080(93.84%), TS018(91.55%), SYSAU
+X(87.36%)</td></tr>
+
+<tr class="critical"><td>DB038</td><td>oem-host-26.example.com</td><td>TS078(95.01%), TS115(94.64%), TS080(93.03%), TS132(92.65%), TS018(89%), TS128(88.48%), C
+TS017(87.79%), TS133(86.92%)</td></tr>
+
+<tr class="critical"><td>DB046</td><td>oem-host-24.example.com</td><td>TS102(95.01%), TS103(93.82%), TS104(85.83%)</td></tr>
+<tr class="critical"><td>DB047</td><td>oem-host-45.example.com</td><td>TS133(96.56%), TS096(94.36%), TS105(94.36%), TS102(92.93%), TS132(87.31%)</td></tr>
+<tr class="critical"><td>DB048</td><td>oem-host-05.example.com</td><td>TS133(99.94%), TS132(93.45%), TS054(91.46%), TS113(86.13%)</td></tr>
+<tr class="critical"><td>DB055</td><td>oem-host-17.example.com</td><td>TS133(99.38%), TS132(92.56%)</td></tr>
+<tr class="critical"><td>DB058</td><td>oem-host-31.example.com</td><td>TS129(95.02%), TS130(94.24%)</td></tr>
+<tr class="critical"><td>DB059</td><td>oem-host-51.example.com</td><td>TS133(94.13%), TS132(93.79%)</td></tr>
+<tr class="critical"><td>DB061</td><td>oem-host-15.example.com</td><td>TS133(99.45%), TS022(95.23%), TS031(95.22%), TS036(95.22%), TS137(95.22%), CBO_TXP
+TS097(95.19%), TS020(95.18%), TS028(95.18%), TS040(95.18%), TS038(95.15%), TS136(95.15%), TS078(95.12%), TPNE_TXN_DT_TBS(95.
+03%), TS032(94.99%), TS080(94.97%), TS030(94.91%), TS081(94.88%), TS047(94.83%), TS029(94.82%), TS033(94.81%), TS025(
+94.71%), TS035(94.66%), TS041(94.41%), TS023(94.33%), TS027(94.29%), TS034(94.16%), TS037(94.04%), TS019(93.86%), CBO_TXST
+TS100(93.5%), TS021(93.23%), TS039(92.6%), TS014(91.52%), TS026(90.86%), TS128(89.58%), TS142(85.43%)</td></tr>
+
+<tr class="critical"><td>DB063</td><td>oem-host-37.example.com</td><td>TS133(99.56%), TS132(94.21%)</td></tr>
+<tr class="critical"><td>DB004</td><td>oem-host-01.example.com</td><td>TS142(99.84%), TS005(96.9%), TS133(96.28%), TS009(95.94%), TS010(95.25%), APM_RECEIPT_DATA(95
+.24%), TS013(94.62%), TS011(85.02%)</td></tr>
+
+<tr class="critical"><td>DB006</td><td>oem-host-41.example.com</td><td>TS072(95.23%), TS068(94.71%), TS075(94.19%), TS073(94.1%), IX_SPC_POSITION_TS(93.8
+2%), TS077(93.77%), TS069(93.65%), TS132(93.56%), TS066(93.44%), TS070(93.41%), TS071(91.39%), TS074(86.9%)</td></tr>
+
+<tr class="critical"><td>DB007</td><td>oem-host-16.example.com</td><td>TS072(95.15%), TS066(95.12%), TS070(94.82%), TS077(94.8%), TS068(94.74%), IX_SPC
+_FIXTURE_TS(94.18%), TS069(93.85%), TS076(93.67%), TS067(92.97%), TS075(92.96%), TS071(91.78%), TS074(89.33%), TS133(85.99%)</td>
+</tr>
+
+<tr class="critical"><td>DB014</td><td>oem-host-03.example.com</td><td>TS133(99.52%)</td></tr>
+<tr class="critical"><td>DB015</td><td>oem-host-33.example.com</td><td>TS133(99.11%), TS132(87.92%)</td></tr>
+<tr class="critical"><td>DB005</td><td>oem-host-10.example.com</td><td>TS133(99.46%), TS132(90.64%)</td></tr>
+<tr class="critical"><td>DB029</td><td>oem-host-23.example.com</td><td>TS133(99.16%), TS132(91.53%)</td></tr>
+<tr class="critical"><td>DB034</td><td>oem-host-04.example.com</td><td>TS133(99.57%), TS139(99.4%), TS140(96.89%), TS132(92.05%)</td></tr>
+<tr class="critical"><td>DB049</td><td>oem-host-11.example.com</td><td>TS133(99.41%), TS117(95.24%), TS132(94.31%)</td></tr>
+<tr class="critical"><td>DB052</td><td>oem-host-08.example.com</td><td>TS083(97.98%), TS133(95.72%), TS085(95.24%), TS094(95.02%), TS093(94.6%), TS087(94.21%)
+, TS086(93.93%), TS090(93.76%), TS091(93.55%), TS088(89.77%), TS092(89.17%), TS089(88.89%), TS084(87.47%), MMA
+TS145(85.49%)</td></tr>
+
+<tr class="critical"><td>DB053</td><td>oem-host-42.example.com</td><td>TS133(99.64%), TS016(95.21%), TS098(95.08%), TS099(94.68%), TS122(93.91%), TS015(93.32%), TS132(93
+.32%), TS120(90.75%), TS124(90.21%), TS123(89%), TS118(88.71%), TS119(88.66%), TS121(88.14%), TS058(85.16%)</td></tr>
+
+<tr class="critical"><td>DB054</td><td>oem-host-43.example.com</td><td>TS133(99.58%), TS132(90.11%)</td></tr>
+<tr class="critical"><td>DB062</td><td>oem-host-40.example.com</td><td>TS133(99.66%), TS079(95.24%), TS135(95.17%), TS038(94.62%), TS078(92.43%), TPNE_TXN
+_DT_TBS(91.32%), TS027(90.34%), TS081(89.76%), TS014(88.87%), TS134(88.64%), TS138(87.02%), TS024(86.06%), TS137(85.41%)</td
+></tr>
+
+<tr class="critical"><td>DB006</td><td>oem-host-09.example.com</td><td>TS133(99.33%), TS132(92.16%)</td></tr>
+</table>
+<h2 style="text-align: center;">CPU Utilization </h2>
+<table>
+    <tr class="head">
+        <th>TARGET Server</th>
+        <th>CPU Utilization%</th>
+    </tr>
+<tr class="low"><td>oem-host-47.example.com</td><td>.8%</td></tr>
+<tr class="low"><td>oem-host-25.example.com</td><td>.78%</td></tr>
+<tr class="low"><td>oem-host-39.example.com</td><td>.62%</td></tr>
+<tr class="low"><td>oem-host-21.example.com</td><td>9.54%</td></tr>
+<tr class="low"><td>oem-host-18.example.com</td><td>.61%</td></tr>
+<tr class="low"><td>oem-host-19.example.com</td><td>.9%</td></tr>
+<tr class="low"><td>oem-host-44.example.com</td><td>5.08%</td></tr>
+<tr class="low"><td>oem-host-20.example.com</td><td>6.43%</td></tr>
+<tr class="low"><td>oem-host-29.example.com</td><td>2.17%</td></tr>
+<tr class="low"><td>oem-host-49.example.com</td><td>1.02%</td></tr>
+<tr class="low"><td>oem-host-28.example.com</td><td>5.1%</td></tr>
+<tr class="low"><td>oem-host-07.example.com</td><td>1.13%</td></tr>
+<tr class="low"><td>oem-host-36.example.com</td><td>6.29%</td></tr>
+<tr class="low"><td>oem-host-02.example.com</td><td>2.47%</td></tr>
+<tr class="low"><td>oem-host-35.example.com</td><td>4.6%</td></tr>
+<tr class="low"><td>oem-host-12.example.com</td><td>4.34%</td></tr>
+<tr class="low"><td>oem-host-03.example.com</td><td>7.31%</td></tr>
+<tr class="low"><td>oem-host-27.example.com</td><td>2.77%</td></tr>
+<tr class="low"><td>oem-host-30.example.com</td><td>.27%</td></tr>
+<tr class="low"><td>oem-host-50.example.com</td><td>1.09%</td></tr>
+<tr class="low"><td>oem-host-14.example.com</td><td>2.7%</td></tr>
+<tr class="low"><td>oem-host-13.example.com</td><td>4.79%</td></tr>
+<tr class="low"><td>oem-host-38.example.com</td><td>48.68%</td></tr>
+<tr class="low"><td>oem-host-34.example.com</td><td>1.27%</td></tr>
+<tr class="low"><td>oem-host-22.example.com</td><td>.64%</td></tr>
+<tr class="low"><td>oem-host-46.example.com</td><td>10.43%</td></tr>
+<tr class="low"><td>oem-host-48.example.com</td><td>.78%</td></tr>
+<tr class="low"><td>oem-host-26.example.com</td><td>.58%</td></tr>
+<tr class="low"><td>oem-host-24.example.com</td><td>.47%</td></tr>
+<tr class="low"><td>oem-host-45.example.com</td><td>.71%</td></tr>
+<tr class="low"><td>oem-host-05.example.com</td><td>6.8%</td></tr>
+<tr class="low"><td>oem-host-17.example.com</td><td>6.97%</td></tr>
+<tr class="low"><td>oem-host-31.example.com</td><td>.81%</td></tr>
+<tr class="low"><td>oem-host-51.example.com</td><td>1.01%</td></tr>
+<tr class="low"><td>oem-host-15.example.com</td><td>2.3%</td></tr>
+<tr class="low"><td>oem-host-37.example.com</td><td>6.52%</td></tr>
+<tr class="low"><td>oem-host-01.example.com</td><td>13.79%</td></tr>
+<tr class="low"><td>oem-host-41.example.com</td><td>.4%</td></tr>
+<tr class="low"><td>oem-host-16.example.com</td><td>.34%</td></tr>
+<tr class="low"><td>oem-host-03.example.com</td><td>1.43%</td></tr>
+<tr class="low"><td>oem-host-33.example.com</td><td>4.93%</td></tr>
+<tr class="low"><td>oem-host-10.example.com</td><td>6.57%</td></tr>
+<tr class="low"><td>oem-host-23.example.com</td><td>6.09%</td></tr>
+<tr class="low"><td>oem-host-04.example.com</td><td>1.23%</td></tr>
+<tr class="low"><td>oem-host-11.example.com</td><td>2.08%</td></tr>
+<tr class="low"><td>oem-host-08.example.com</td><td>4.27%</td></tr>
+<tr class="low"><td>oem-host-42.example.com</td><td>.97%</td></tr>
+<tr class="low"><td>oem-host-43.example.com</td><td>8.42%</td></tr>
+<tr class="low"><td>oem-host-40.example.com</td><td>7.68%</td></tr>
+<tr class="low"><td>oem-host-09.example.com</td><td>3.14%</td></tr>
+</table>
+<h2 style="text-align: center;">Database Growth - Last 7 Months (Including Current Month)</h2>
+<p style="margin: 10px auto; max-width: 80%; font-size: 12px; color: #666; text-align: left;">
+<strong>Note:</strong> Consistent 0% allocated growth in databases suggests good capacity planning (pre-allocated). 
+Variable used space growth is normal due to data purging, batch processing cycles, and transaction volume fluctuations.
+</p>
+<table>
+    <tr class="head">
+        <th>TARGET DB</th>
+        <th>TARGET Server</th>
+        <th>MONTH_DT</th>
+        <th>ALLOCATED_GB</th>
+        <th>USED_GB</th>
+        <th>ALLOCATED_GROWTH%</th>
+        <th>USED_GROWTH%</th>
+    </tr>
+<tr><td>DB001</td><td>oem-host-47.example.com</td><td>JAN-2026</td><td>116.94</td><td>48.48</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB001</td><td>oem-host-47.example.com</td><td>FEB-2026</td><td>116.94</td><td>49.28</td><td>0%</td><td>1.65%</td></tr>
+<tr><td>DB002</td><td>oem-host-25.example.com</td><td>JAN-2026</td><td>808.94</td><td>538.7</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB002</td><td>oem-host-25.example.com</td><td>FEB-2026</td><td>809.03</td><td>538.77</td><td>.01%</td><td>.01%</td></tr>
+<tr><td>DB003</td><td>oem-host-39.example.com</td><td>JAN-2026</td><td>871.02</td><td>605.18</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB003</td><td>oem-host-39.example.com</td><td>FEB-2026</td><td>871.02</td><td>605.14</td><td>0%</td><td>-.01%</td></tr>
+<tr><td>DB005</td><td>oem-host-21.example.com</td><td>JAN-2026</td><td>980.42</td><td>479.45</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB005</td><td>oem-host-21.example.com</td><td>FEB-2026</td><td>983.79</td><td>483</td><td>.34%</td><td>.74%</td></tr>
+<tr><td>DB010</td><td>oem-host-18.example.com</td><td>JAN-2026</td><td>11510.27</td><td>2288.47</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB010</td><td>oem-host-18.example.com</td><td>FEB-2026</td><td>11524.03</td><td>1677.59</td><td>.12%</td><td>-26.69%</td></tr>
+<tr><td>DB011</td><td>oem-host-19.example.com</td><td>JAN-2026</td><td>1655.47</td><td>1366.72</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB011</td><td>oem-host-19.example.com</td><td>FEB-2026</td><td>1655.47</td><td>1366.78</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB016</td><td>oem-host-44.example.com</td><td>JAN-2026</td><td>1195.11</td><td>516.35</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB016</td><td>oem-host-44.example.com</td><td>FEB-2026</td><td>1195.68</td><td>515.84</td><td>.05%</td><td>-.1%</td></tr>
+<tr><td>DB017</td><td>oem-host-20.example.com</td><td>JAN-2026</td><td>4.2</td><td>2.87</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB017</td><td>oem-host-20.example.com</td><td>FEB-2026</td><td>4.2</td><td>2.88</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB004</td><td>oem-host-29.example.com</td><td>FEB-2026</td><td>170.43</td><td>152.55</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB018</td><td>oem-host-49.example.com</td><td>JAN-2026</td><td>227.93</td><td>156.34</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB018</td><td>oem-host-49.example.com</td><td>FEB-2026</td><td>229.69</td><td>141.54</td><td>.77%</td><td>-9.47%</td></tr>
+<tr><td>DB019</td><td>oem-host-28.example.com</td><td>JAN-2026</td><td>37.27</td><td>5.44</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB019</td><td>oem-host-28.example.com</td><td>FEB-2026</td><td>37.27</td><td>5.44</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB020</td><td>oem-host-07.example.com</td><td>FEB-2026</td><td>3.73</td><td>2.7</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB021</td><td>oem-host-36.example.com</td><td>JAN-2026</td><td>85.58</td><td>60.97</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB021</td><td>oem-host-36.example.com</td><td>FEB-2026</td><td>85.59</td><td>60.96</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB022</td><td>oem-host-02.example.com</td><td>JAN-2026</td><td>2869.54</td><td>2076.11</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB022</td><td>oem-host-02.example.com</td><td>FEB-2026</td><td>2869.9</td><td>1871.25</td><td>.01%</td><td>-9.87%</td></tr>
+<tr><td>DB023</td><td>oem-host-35.example.com</td><td>JAN-2026</td><td>3112.85</td><td>2001.24</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB023</td><td>oem-host-35.example.com</td><td>FEB-2026</td><td>3206.79</td><td>2003.32</td><td>3.02%</td><td>.1%</td></tr>
+<tr><td>DB024</td><td>oem-host-12.example.com</td><td>JAN-2026</td><td>3103.2</td><td>2808.93</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB024</td><td>oem-host-12.example.com</td><td>FEB-2026</td><td>3103.27</td><td>2810.89</td><td>0%</td><td>.07%</td></tr>
+<tr><td>DB025</td><td>oem-host-03.example.com</td><td>JAN-2026</td><td>3085.94</td><td>2778.83</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB025</td><td>oem-host-03.example.com</td><td>FEB-2026</td><td>3085.94</td><td>2780.66</td><td>0%</td><td>.07%</td></tr>
+<tr><td>DB026</td><td>oem-host-27.example.com</td><td>JAN-2026</td><td>3642.88</td><td>2675.62</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB026</td><td>oem-host-27.example.com</td><td>FEB-2026</td><td>3642.88</td><td>2675.54</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB027</td><td>oem-host-30.example.com</td><td>JAN-2026</td><td>489.73</td><td>228.28</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB027</td><td>oem-host-30.example.com</td><td>FEB-2026</td><td>489.77</td><td>228.31</td><td>.01%</td><td>.01%</td></tr>
+<tr><td>DB028</td><td>oem-host-50.example.com</td><td>JAN-2026</td><td>492.92</td><td>228.65</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB028</td><td>oem-host-50.example.com</td><td>FEB-2026</td><td>492.93</td><td>228.68</td><td>0%</td><td>.01%</td></tr>
+<tr><td>DB030</td><td>oem-host-14.example.com</td><td>JAN-2026</td><td>227.01</td><td>139.02</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB030</td><td>oem-host-14.example.com</td><td>FEB-2026</td><td>227.02</td><td>138.38</td><td>0%</td><td>-.46%</td></tr>
+<tr><td>DB031</td><td>oem-host-13.example.com</td><td>JAN-2026</td><td>108.41</td><td>57.4</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB031</td><td>oem-host-13.example.com</td><td>FEB-2026</td><td>108.45</td><td>57.46</td><td>.04%</td><td>.1%</td></tr>
+<tr><td>DB032</td><td>oem-host-38.example.com</td><td>JAN-2026</td><td>108.33</td><td>57.45</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB032</td><td>oem-host-38.example.com</td><td>FEB-2026</td><td>108.37</td><td>57.49</td><td>.04%</td><td>.07%</td></tr>
+<tr><td>DB033</td><td>oem-host-34.example.com</td><td>JAN-2026</td><td>380.35</td><td>337.21</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB033</td><td>oem-host-34.example.com</td><td>FEB-2026</td><td>380.37</td><td>337.21</td><td>.01%</td><td>0%</td></tr>
+<tr><td>DB035</td><td>oem-host-22.example.com</td><td>JAN-2026</td><td>1330.34</td><td>752.63</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB035</td><td>oem-host-22.example.com</td><td>FEB-2026</td><td>1330.54</td><td>764</td><td>.02%</td><td>1.51%</td></tr>
+<tr><td>DB036</td><td>oem-host-46.example.com</td><td>JAN-2026</td><td>42.94</td><td>26.59</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB036</td><td>oem-host-46.example.com</td><td>FEB-2026</td><td>42.99</td><td>26.62</td><td>.12%</td><td>.11%</td></tr>
+<tr><td>DB037</td><td>oem-host-48.example.com</td><td>JAN-2026</td><td>2650.36</td><td>2242.43</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB037</td><td>oem-host-48.example.com</td><td>FEB-2026</td><td>2650.63</td><td>2242.73</td><td>.01%</td><td>.01%</td></tr>
+<tr><td>DB038</td><td>oem-host-26.example.com</td><td>JAN-2026</td><td>459.34</td><td>305.54</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB038</td><td>oem-host-26.example.com</td><td>FEB-2026</td><td>459.58</td><td>306.02</td><td>.05%</td><td>.16%</td></tr>
+<tr><td>DB046</td><td>oem-host-24.example.com</td><td>JAN-2026</td><td>8861.14</td><td>6039.07</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB046</td><td>oem-host-24.example.com</td><td>FEB-2026</td><td>8861.14</td><td>6039.46</td><td>0%</td><td>.01%</td></tr>
+<tr><td>DB047</td><td>oem-host-45.example.com</td><td>JAN-2026</td><td>863.34</td><td>390.06</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB047</td><td>oem-host-45.example.com</td><td>FEB-2026</td><td>863.34</td><td>390.05</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB048</td><td>oem-host-05.example.com</td><td>JAN-2026</td><td>78.76</td><td>24.87</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB048</td><td>oem-host-05.example.com</td><td>FEB-2026</td><td>78.81</td><td>24.7</td><td>.06%</td><td>-.68%</td></tr>
+<tr><td>DB055</td><td>oem-host-17.example.com</td><td>JAN-2026</td><td>23.84</td><td>3.58</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB055</td><td>oem-host-17.example.com</td><td>FEB-2026</td><td>23.84</td><td>3.6</td><td>0%</td><td>.56%</td></tr>
+<tr><td>DB058</td><td>oem-host-31.example.com</td><td>JAN-2026</td><td>743.92</td><td>453.01</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB058</td><td>oem-host-31.example.com</td><td>FEB-2026</td><td>743.92</td><td>453.08</td><td>0%</td><td>.02%</td></tr>
+<tr><td>DB059</td><td>oem-host-51.example.com</td><td>JAN-2026</td><td>9.74</td><td>3.8</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB059</td><td>oem-host-51.example.com</td><td>FEB-2026</td><td>9.77</td><td>3.85</td><td>.31%</td><td>1.32%</td></tr>
+<tr><td>DB061</td><td>oem-host-15.example.com</td><td>JAN-2026</td><td>889.01</td><td>744.25</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB061</td><td>oem-host-15.example.com</td><td>FEB-2026</td><td>889.02</td><td>744.26</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB063</td><td>oem-host-37.example.com</td><td>JAN-2026</td><td>5.87</td><td>3.42</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB063</td><td>oem-host-37.example.com</td><td>FEB-2026</td><td>5.89</td><td>3.43</td><td>.34%</td><td>0%</td></tr>
+<tr><td>DB004</td><td>oem-host-01.example.com</td><td>JAN-2026</td><td>805.86</td><td>660.34</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB004</td><td>oem-host-01.example.com</td><td>FEB-2026</td><td>806.14</td><td>660.37</td><td>.03%</td><td>0%</td></tr>
+<tr><td>DB006</td><td>oem-host-41.example.com</td><td>JAN-2026</td><td>1081.3</td><td>598.08</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB006</td><td>oem-host-41.example.com</td><td>FEB-2026</td><td>1081.41</td><td>600.05</td><td>.01%</td><td>.33%</td></tr>
+<tr><td>DB007</td><td>oem-host-16.example.com</td><td>JAN-2026</td><td>2298.33</td><td>465.87</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB007</td><td>oem-host-16.example.com</td><td>FEB-2026</td><td>2298.37</td><td>475.03</td><td>0%</td><td>1.97%</td></tr>
+<tr><td>DB014</td><td>oem-host-03.example.com</td><td>FEB-2026</td><td>13.71</td><td>6</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB015</td><td>oem-host-33.example.com</td><td>FEB-2026</td><td>104.98</td><td>4.41</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB005</td><td>oem-host-10.example.com</td><td>FEB-2026</td><td>95.73</td><td>45.3</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB029</td><td>oem-host-23.example.com</td><td>JAN-2026</td><td>4.21</td><td>2.84</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB029</td><td>oem-host-23.example.com</td><td>FEB-2026</td><td>4.21</td><td>2.85</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB034</td><td>oem-host-04.example.com</td><td>JAN-2026</td><td>348.71</td><td>321.65</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB034</td><td>oem-host-04.example.com</td><td>FEB-2026</td><td>348.71</td><td>321.66</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB049</td><td>oem-host-11.example.com</td><td>JAN-2026</td><td>13.27</td><td>9.54</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB049</td><td>oem-host-11.example.com</td><td>FEB-2026</td><td>13.27</td><td>9.56</td><td>0%</td><td>.21%</td></tr>
+<tr><td>DB052</td><td>oem-host-08.example.com</td><td>JAN-2026</td><td>4007.42</td><td>2845.71</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB052</td><td>oem-host-08.example.com</td><td>FEB-2026</td><td>4007.42</td><td>2845.78</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB053</td><td>oem-host-42.example.com</td><td>JAN-2026</td><td>1086.35</td><td>853.2</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB053</td><td>oem-host-42.example.com</td><td>FEB-2026</td><td>1087.05</td><td>853.28</td><td>.06%</td><td>.01%</td></tr>
+<tr><td>DB054</td><td>oem-host-43.example.com</td><td>JAN-2026</td><td>24.13</td><td>6.09</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB054</td><td>oem-host-43.example.com</td><td>FEB-2026</td><td>24.13</td><td>6.11</td><td>0%</td><td>.33%</td></tr>
+<tr><td>DB062</td><td>oem-host-40.example.com</td><td>JAN-2026</td><td>599.13</td><td>333.81</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB062</td><td>oem-host-40.example.com</td><td>FEB-2026</td><td>619.99</td><td>348.14</td><td>3.48%</td><td>4.29%</td></tr>
+<tr><td>DB006</td><td>oem-host-09.example.com</td><td>FEB-2026</td><td>6.13</td><td>3.13</td><td>0%</td><td>0%</td></tr>
+</table>
+</body>
+</html>

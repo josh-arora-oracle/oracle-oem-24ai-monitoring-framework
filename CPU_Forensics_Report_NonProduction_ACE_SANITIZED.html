@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CPU Forensics Report - Non-Production</title>
+<style>
+body {
+  margin:0;
+  background:#0f172a;
+  color:#e2e8f0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Poppins,sans-serif;
+  line-height:1.5;
+}
+.container {
+  max-width:1600px;
+  margin:0 auto;
+  background:#ffffff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.75);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.header-box {
+  background:#1e3a8a;
+  color:#ffffff;
+  padding:32px 40px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,0.9);
+}
+.header-title {
+  font-size:28px;
+  font-weight:700;
+  color:#ffffff;
+  margin:0 0 8px 0;
+  letter-spacing:0.5px;
+}
+.header-sub {
+  font-size:13px;
+  font-weight:500;
+  color:#dbeafe;
+  margin-bottom:8px;
+}
+.header-meta {
+  font-size:11px;
+  font-weight:400;
+  color:#9cb3ff;
+}
+.content-section {
+  padding:32px 40px 48px 40px;
+  background:#ffffff;
+  color:#1e293b;
+}
+.section-title {
+  font-size:18px;
+  font-weight:700;
+  color:#0f172a;
+  margin:32px 0 12px 0;
+  padding-bottom:8px;
+  border-bottom:4px solid #7c3aed;
+}
+.interpretation-guide {
+  border-radius:14px;
+  padding:16px 20px;
+  margin:20px 0;
+  background:#1e293b;
+  color:#f8fafc;
+  border:1px solid #475569;
+}
+.interpretation-guide h3 {
+  font-size:16px;
+  font-weight:700;
+  color:#ffffff;
+  margin:0 0 10px 0;
+  padding-bottom:6px;
+  border-bottom:2px solid #94a3b8;
+}
+.interpretation-guide ul {
+  margin-left:20px;
+  font-size:13px;
+  line-height:1.5;
+}
+.interpretation-guide p {
+  font-size:13px;
+  line-height:1.5;
+  margin:8px 0;
+  color:#e2e8f0;
+}
+.summary-box {
+  background:#ecfdf5;
+  border-left:5px solid #10b981;
+  color:#065f46;
+  border-radius:14px;
+  padding:16px 20px;
+  margin:20px 0;
+  border:1px solid #10b981;
+}
+.summary-title {
+  font-size:12px;
+  font-weight:700;
+  color:#065f46;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-bottom:6px;
+}
+.metric-row {
+  text-align:center;
+  padding:10px 0 10px 0;
+}
+.metric-card {
+  display:inline-block;
+  min-width:180px;
+  background:#1e293b;
+  border:1px solid #475569;
+  color:#f8fafc;
+  padding:16px 18px;
+  margin:10px;
+  border-radius:12px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.7);
+  text-align:center;
+}
+.metric-value {
+  font-size:24px;
+  font-weight:700;
+  line-height:1.2;
+  color:#ffffff;
+}
+.metric-label {
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.08em;
+  color:#c7d2fe;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+.table-wrap {
+  overflow-x:auto;
+  border-radius:14px;
+  border:1px solid #e2e8f0;
+  box-shadow:0 16px 40px rgba(15,23,42,0.18);
+  background:#ffffff;
+  margin-bottom:24px;
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  background:#ffffff;
+  font-size:12px;
+  color:#1e293b;
+}
+thead th {
+  background:#1e293b;
+  color:#ffffff;
+  text-align:left;
+  padding:8px 10px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  border:1px solid #1e293b;
+}
+tbody td {
+  padding:6px 10px;
+  border-top:1px solid #e2e8f0;
+  vertical-align:top;
+  background:#ffffff;
+  color:#1e293b;
+  font-size:12px;
+  line-height:1.4;
+}
+tbody tr:nth-child(even) {
+  background:#f8f9fa;
+}
+.badge {
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:6px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.03em;
+}
+.badge-critical {
+  background:#dc3545;
+  color:#fff;
+}
+.badge-warning {
+  background:#ffc107;
+  color:#000;
+}
+.badge-secondary {
+  background:#6c757d;
+  color:#fff;
+}
+.toolkit-header {
+  background:#1e293b;
+  color:#f8fafc;
+  padding:20px 24px;
+  border-radius:14px 14px 0 0;
+  border:1px solid #475569;
+}
+.toolkit-header-title {
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.toolkit-header-sub {
+  font-size:12px;
+  color:#cbd5e1;
+}
+.toolkit-body {
+  background:#ffffff;
+  color:#1e293b;
+  padding:24px;
+  border:1px solid #e2e8f0;
+  border-radius:0 0 14px 14px;
+  box-shadow:0 16px 40px rgba(15,23,42,0.18);
+}
+.toolkit-block-title {
+  font-size:15px;
+  font-weight:700;
+  color:#0f172a;
+  margin:24px 0 12px 0;
+  padding-bottom:6px;
+  border-bottom:2px solid #7c3aed;
+}
+.cmd-label {
+  font-size:11px;
+  font-weight:600;
+  color:#475569;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  margin-top:14px;
+}
+.cmd-box {
+  background:#1e293b;
+  color:#10b981;
+  padding:10px 12px;
+  border-radius:6px;
+  font-family:monospace;
+  font-size:13px;
+  margin:4px 0;
+  border:1px solid #475569;
+}
+.cmd-desc {
+  font-size:12px;
+  color:#64748b;
+  margin-bottom:8px;
+}
+.sql-hint-strip {
+  background:#fef3c7;
+  border-left:4px solid #f59e0b;
+  padding:12px 16px;
+  margin:16px 0;
+  border-radius:6px;
+  font-size:13px;
+  color:#78350f;
+  line-height:1.5;
+}
+.inline-code {
+  background:#1e293b;
+  color:#10b981;
+  padding:2px 6px;
+  border-radius:4px;
+  font-family:monospace;
+  font-size:12px;
+}
+.code-block {
+  background:#1e293b;
+  color:#10b981;
+  padding:14px;
+  border-radius:8px;
+  font-family:monospace;
+  font-size:12px;
+  border:1px solid #475569;
+  overflow-x:auto;
+  line-height:1.6;
+}
+.toolkit-hints-box {
+  background:#ecfdf5;
+  border-left:4px solid #10b981;
+  padding:14px 18px;
+  margin:16px 0;
+  border-radius:6px;
+}
+.toolkit-hints-title {
+  font-size:13px;
+  font-weight:700;
+  color:#065f46;
+  margin-bottom:8px;
+}
+.toolkit-hints-list {
+  margin-left:18px;
+  font-size:12px;
+  color:#065f46;
+  line-height:1.6;
+}
+.footer {
+  background:#1e293b;
+  color:#cbd5e1;
+  padding:20px 24px;
+  border-radius:14px;
+  border:1px solid #475569;
+  margin-top:32px;
+  text-align:center;
+}
+.footer-title {
+  font-size:14px;
+  font-weight:700;
+  color:#f8fafc;
+  margin-bottom:10px;
+}
+.footer-line {
+  font-size:11px;
+  color:#94a3b8;
+  margin:3px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header-box">
+  <div class="header-title">CPU FORENSICS ANALYZER</div>
+  <div class="header-sub">Non-Production Environment</div>
+  <div class="header-meta">
+    Report generated 2026-03-01 11:29:46 EST | Host: oem-host-32.example.com | Spike Threshold: 98%
+  </div>
+</div>
+
+<div class="content-section">
+<div class="section-title">Executive Dashboard</div>
+
+<div class="interpretation-guide">
+  <h3>How to Interpret This Report</h3>
+  <p><strong>Spike Threshold:</strong> Currently set to 98%. This marks the boundary between "expected high utilization" and "potential runaway CPU event."</p>
+  <p><strong>Color Coding:</strong></p>
+  <ul>
+    <li><span style="color:#dc3545;font-weight:bold;">RED (Critical ≥90%)</span> → Sustained CPU pressure, potential application impact</li>
+    <li><span style="color:#fd7e14;font-weight:bold;">ORANGE (Warning 80-89%)</span> → Elevated CPU usage, requires review</li>
+    <li><span style="color:#ffc107;font-weight:bold;">YELLOW (Elevated 50-79%)</span> → Moderate baseline, trend monitoring recommended</li>
+    <li>GRAY (Normal <50%) → Healthy utilization range</li>
+  </ul>
+  <p><strong>Action Triggers:</strong> If a host shows ≥10 spike incidents above 98% in the last 30 days → RCA REQUIRED</p>
+</div>
+
+<div class="metric-row">
+<div class="metric-card"><div class="metric-value">31</div><div class="metric-label">Total Hosts Monitored</div></div><div class="metric-card"><div class="metric-value">5.02%</div><div class="metric-label">Average CPU (30d)</div></div><div class="metric-card"><div class="metric-value">100.00%</div><div class="metric-label">Peak CPU (30d)</div></div><div class="metric-card"><div class="metric-value">9</div><div class="metric-label">Spike Events ???98%</div></div><div class="metric-card"><div class="metric-value">1</div><div class="metric-label">Hosts With Spikes</div></div>
+</div>
+<div class="section-title">Current CPU Snapshot (Latest Measurement)</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hostname</th>
+  <th>OS Type</th>
+  <th>Current CPU %</th>
+  <th>Status</th>
+  <th>Last Measured</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>oem-host-20</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">36.30%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-06</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">33.01%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-10</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">16.49%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-16</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">12.49%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-38</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">10.12%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-02</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">8.68%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-22</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">8.17%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-30</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">7.68%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-61</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">7.25%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-36</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">7.21%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">6.65%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-50</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">5.90%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-14</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">5.67%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-04</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">5.49%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-63</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">5.29%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-42</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">3.81%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-24</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">3.74%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-08</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">3.55%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-52</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">2.89%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-26</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">2.74%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-18</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">2.62%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-54</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">2.05%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-58</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">1.32%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-40</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">1.12%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-46</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">1.10%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-34</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.96%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-32</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.89%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-48</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.73%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-44</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.72%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-28</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.51%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+<tr><td><strong>oem-host-56</strong></td><td>Linux</td><td style="text-align:center;font-weight:bold;color:#212529;">0.46%</td><td><span class="badge badge-secondary">NORMAL</span></td><td>2026-02-28 23:00</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section-title">High CPU Spike Days (CPU ≥98% incidents)</div>
+<div class="interpretation-guide">
+  <p>This section lists <strong>calendar days</strong> where at least one host experienced CPU ≥98%. Each spike incident is one hourly sample meeting that threshold.</p>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Date</th>
+  <th>Hosts Affected</th>
+  <th>Total Spike Incidents</th>
+  <th>Peak CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>2026-02-12</td><td style="text-align:center;">1</td><td style="text-align:center;font-weight:bold;color:#dc3545;">1</td><td style="text-align:center;font-weight:bold;color:#dc3545;">98.28%</td></tr>
+<tr><td>2026-02-11</td><td style="text-align:center;">1</td><td style="text-align:center;font-weight:bold;color:#dc3545;">8</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section-title">7-Day Rolling CPU Trend</div>
+<div class="summary-box">
+  <div class="summary-title">Interpretation</div>
+  Rolling 7-day averages smooth out daily spikes and show underlying baseline CPU consumption.
+  If your 7-day average is trending upward consistently, consider capacity planning review.
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Week Ending</th>
+  <th>Avg CPU %</th>
+  <th>Max CPU %</th>
+  <th>Spike Incidents</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>2026-03-01</td><td style="text-align:center;">5.27%</td><td style="text-align:center;font-weight:bold;color:#212529;">36.30%</td><td style="text-align:center;">0</td></tr>
+<tr><td>2026-02-22</td><td style="text-align:center;">5.07%</td><td style="text-align:center;font-weight:bold;color:#212529;">34.08%</td><td style="text-align:center;">0</td></tr>
+<tr><td>2026-02-15</td><td style="text-align:center;">4.99%</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td style="text-align:center;">9</td></tr>
+<tr><td>2026-02-08</td><td style="text-align:center;">4.56%</td><td style="text-align:center;font-weight:bold;color:#212529;">29.34%</td><td style="text-align:center;">0</td></tr>
+<tr><td>2026-02-01</td><td style="text-align:center;">5.60%</td><td style="text-align:center;font-weight:bold;color:#212529;">38.68%</td><td style="text-align:center;">0</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section-title">Recent High CPU Events (Last 30 Days)</div>
+<div class="interpretation-guide">
+  <p>Top 50 hourly spike events ≥98%. This view helps identify:</p>
+  <ul>
+    <li><strong>Recurring patterns:</strong> Same host, same hour each day → batch job</li>
+    <li><strong>Isolated events:</strong> Random spikes → investigate recent changes</li>
+  </ul>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hostname</th>
+  <th>OS Type</th>
+  <th>Timestamp</th>
+  <th>CPU %</th>
+  <th>Pattern Hint</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 19:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 18:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 17:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 20:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 15:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 16:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 21:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">99.96%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-11 14:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">99.40%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+<tr><td><strong>oem-host-12</strong></td><td>Linux</td><td>2026-02-12 03:00</td><td style="text-align:center;font-weight:bold;color:#dc3545;">98.28%</td><td><em>Check for recurring HH:MI pattern</em></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section-title">Top 20 CPU Consumers - Linux Hosts</div>
+<div class="interpretation-guide">
+  <p>Hosts sorted by max CPU in last 30 days. "Incidents" = hourly samples ≥98%.</p>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hostname</th>
+  <th>Avg CPU</th>
+  <th>Min CPU</th>
+  <th>Max CPU</th>
+  <th>Std Dev</th>
+  <th>Incidents</th>
+  <th>Action Required</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>oem-host-12</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">9.34%</td><td style="text-align:center;">6.37%</td><td style="text-align:center;font-weight:bold;color:#dc3545;">100.00%</td><td style="text-align:center;color:#6c757d;">13.77</td><td style="text-align:center;font-weight:bold;color:#dc3545;">9</td><td><span class="badge badge-warning">REVIEW</span></td></tr>
+<tr><td><strong>oem-host-40</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">3.43%</td><td style="text-align:center;">0.75%</td><td style="text-align:center;font-weight:bold;color:#212529;">38.68%</td><td style="text-align:center;color:#6c757d;">8.38</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-06</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">10.38%</td><td style="text-align:center;">8.66%</td><td style="text-align:center;font-weight:bold;color:#212529;">36.31%</td><td style="text-align:center;color:#6c757d;">2.98</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-20</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">7.00%</td><td style="text-align:center;">3.47%</td><td style="text-align:center;font-weight:bold;color:#212529;">36.30%</td><td style="text-align:center;color:#6c757d;">3.03</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-32</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">0.76%</td><td style="text-align:center;">0.19%</td><td style="text-align:center;font-weight:bold;color:#212529;">35.09%</td><td style="text-align:center;color:#6c757d;">2.36</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-04</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">6.48%</td><td style="text-align:center;">4.98%</td><td style="text-align:center;font-weight:bold;color:#212529;">30.06%</td><td style="text-align:center;color:#6c757d;">3.23</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-10</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">16.20%</td><td style="text-align:center;">15.01%</td><td style="text-align:center;font-weight:bold;color:#212529;">26.45%</td><td style="text-align:center;color:#6c757d;">1.29</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-50</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">5.97%</td><td style="text-align:center;">3.97%</td><td style="text-align:center;font-weight:bold;color:#212529;">25.86%</td><td style="text-align:center;color:#6c757d;">3.11</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-54</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">3.13%</td><td style="text-align:center;">1.40%</td><td style="text-align:center;font-weight:bold;color:#212529;">23.43%</td><td style="text-align:center;color:#6c757d;">1.57</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-61</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">8.09%</td><td style="text-align:center;">3.91%</td><td style="text-align:center;font-weight:bold;color:#212529;">23.07%</td><td style="text-align:center;color:#6c757d;">3.05</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-22</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">12.44%</td><td style="text-align:center;">8.17%</td><td style="text-align:center;font-weight:bold;color:#212529;">23.04%</td><td style="text-align:center;color:#6c757d;">1.75</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-38</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">10.16%</td><td style="text-align:center;">9.77%</td><td style="text-align:center;font-weight:bold;color:#212529;">20.33%</td><td style="text-align:center;color:#6c757d;">1.02</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-16</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">5.58%</td><td style="text-align:center;">2.33%</td><td style="text-align:center;font-weight:bold;color:#212529;">16.08%</td><td style="text-align:center;color:#6c757d;">3.93</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-02</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">7.33%</td><td style="text-align:center;">4.93%</td><td style="text-align:center;font-weight:bold;color:#212529;">15.41%</td><td style="text-align:center;color:#6c757d;">1.69</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-24</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">4.06%</td><td style="text-align:center;">3.42%</td><td style="text-align:center;font-weight:bold;color:#212529;">12.53%</td><td style="text-align:center;color:#6c757d;">1.18</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-63</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">5.47%</td><td style="text-align:center;">4.81%</td><td style="text-align:center;font-weight:bold;color:#212529;">11.48%</td><td style="text-align:center;color:#6c757d;">0.79</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-30</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">7.75%</td><td style="text-align:center;">7.14%</td><td style="text-align:center;font-weight:bold;color:#212529;">10.59%</td><td style="text-align:center;color:#6c757d;">0.58</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-36</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">7.43%</td><td style="text-align:center;">6.93%</td><td style="text-align:center;font-weight:bold;color:#212529;">9.77%</td><td style="text-align:center;color:#6c757d;">0.37</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-18</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">2.80%</td><td style="text-align:center;">2.32%</td><td style="text-align:center;font-weight:bold;color:#212529;">7.99%</td><td style="text-align:center;color:#6c757d;">0.51</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+<tr><td><strong>oem-host-42</strong></td><td style="text-align:center;font-weight:bold;color:#212529;">3.96%</td><td style="text-align:center;">3.40%</td><td style="text-align:center;font-weight:bold;color:#212529;">7.87%</td><td style="text-align:center;color:#6c757d;">0.38</td><td style="text-align:center;font-weight:bold;color:#212529;">0</td><td><span class="badge badge-secondary">TRACK</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-title">Top 20 CPU Consumers - AIX Hosts</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>Hostname</th>
+  <th>Avg CPU</th>
+  <th>Min CPU</th>
+  <th>Max CPU</th>
+  <th>Std Dev</th>
+  <th>Incidents</th>
+  <th>Action Required</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+<div class="toolkit-header">
+  <div class="toolkit-header-title">CPU Forensics Toolkit</div>
+  <div class="toolkit-header-sub">
+    OS + Oracle workload capture steps for escalation.
+  </div>
+</div>
+
+<div class="toolkit-body">
+
+  <div class="toolkit-block-title">Linux CPU Monitoring Commands</div>
+
+  <div class="cmd-label">1. Real-Time CPU Usage</div>
+  <div class="cmd-box">top -b -n 1 | head -20</div>
+  <div class="cmd-desc">Snapshot of who is burning CPU right now</div>
+
+  <div class="cmd-label">2. CPU Usage by Process</div>
+  <div class="cmd-box">ps aux --sort=-%cpu | head -15</div>
+  <div class="cmd-desc">Top consumers sorted by %CPU</div>
+
+  <div class="cmd-label">3. Load Averages</div>
+  <div class="cmd-box">uptime</div>
+  <div class="cmd-desc">1 / 5 / 15 minute load</div>
+
+  <div class="cmd-label">4. Detailed CPU Stats</div>
+  <div class="cmd-box">mpstat 1 5</div>
+  <div class="cmd-desc">Per-second CPU sampling</div>
+
+  <div class="cmd-label">5. Per-Core Stats</div>
+  <div class="cmd-box">mpstat -P ALL 1 3</div>
+  <div class="cmd-desc">Which logical CPU is saturated?</div>
+
+  <div class="cmd-label">6. Historical CPU (SAR)</div>
+  <div class="cmd-box">sar -u 1 10</div>
+  <div class="cmd-desc">Short trend window</div>
+
+  <div class="cmd-label">7. I/O Wait Correlation</div>
+  <div class="cmd-box">iostat -x 1 5</div>
+  <div class="cmd-desc">High %iowait = storage bottleneck</div>
+
+  <div class="cmd-label">8. Oracle PIDs Burning CPU</div>
+  <div class="cmd-box">ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | grep -i oracle | head -20</div>
+  <div class="cmd-desc">Which Oracle process is guilty</div>
+
+  <hr style="border:0;border-top:1px solid #cbd5e1;margin:16px 0;"/>
+
+  <div class="toolkit-block-title">AIX CPU Monitoring Commands</div>
+
+  <div class="cmd-label">1. Live System Monitor</div>
+  <div class="cmd-box">topas</div>
+  <div class="cmd-desc">Interactive live view</div>
+
+  <div class="cmd-label">2. VM / Run Queue / Idle</div>
+  <div class="cmd-box">vmstat 2 5</div>
+  <div class="cmd-desc">Run queue depth, idle %, wait states</div>
+
+  <div class="cmd-label">3. CPU Utilization Over Time</div>
+  <div class="cmd-box">sar -u 1 10</div>
+  <div class="cmd-desc">Busy vs idle trend</div>
+
+  <div class="cmd-label">4. Hottest Processes</div>
+  <div class="cmd-box">ps aux | sort -rn -k 3 | head -15</div>
+  <div class="cmd-desc">Sorted by %CPU</div>
+
+  <div class="cmd-label">5. LPAR Utilization</div>
+  <div class="cmd-box">lparstat 2 5</div>
+  <div class="cmd-desc">LPAR entitlement / CPU pressure</div>
+
+  <div class="cmd-label">6. Per-Logical CPU Saturation</div>
+  <div class="cmd-box">sar -P ALL 1 5</div>
+  <div class="cmd-desc">Which logical CPU is pegged?</div>
+
+  <div class="cmd-label">7. Oracle on AIX</div>
+  <div class="cmd-box">ps aux | grep oracle | sort -rn -k 3 | head -20</div>
+  <div class="cmd-desc">Top Oracle offenders</div>
+
+  <div class="toolkit-hints-box">
+    <div class="toolkit-hints-title">Troubleshooting Hints</div>
+    <ul class="toolkit-hints-list">
+      <li>High CPU + low I/O wait = CPU-bound workload</li>
+      <li>High CPU + high I/O wait = storage bottleneck</li>
+      <li>Load avg &gt; core count = sustained CPU saturation</li>
+      <li>One core pinned = single-thread choke</li>
+      <li>Oracle burning CPU = collect SQL_IDs immediately</li>
+    </ul>
+  </div>
+
+  <div class="toolkit-block-title">Deep Oracle CPU Forensics</div>
+
+  <div class="sql-hint-strip">
+    For full SQL_ID attribution (which SQL_IDs burned CPU and who owns them),
+    run <span class="inline-code">/home/oracle/oem_rep/elite_cpu_forensics.sql</span>
+    on the target DB. That script:
+    captures top CPU SQL_IDs,
+    correlates ASH/AWR pressure,
+    ties CPU hotspots to workload owners.
+  </div>
+
+  <pre class="code-block">sqlplus / as sysdba
+@/home/oracle/oem_rep/elite_cpu_forensics.sql
+
+-- Output:
+--   elite_cpu_analysis_report.txt
+--
+-- Use in escalation:
+--   - which SQL_IDs burned CPU
+--   - which sessions were runnable but starved
+--   - single batch job vs chronic baseline
+</pre>
+
+</div>
+
+<div class="footer">
+  <div class="footer-title">
+  <div class="footer-line">
+  <div class="footer-line">
+  <div class="footer-line">
+  <div class="footer-line">
+  <div class="footer-line">
+</div>
+</div>
+</div>
+</body>
+</html>

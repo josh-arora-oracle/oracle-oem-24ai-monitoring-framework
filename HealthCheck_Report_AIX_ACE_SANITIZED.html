@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health check report for Non-Prod OEM 24ai AIX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .table-container {
+            max-width: 80%; /* Ensures table fits the screen width */
+            overflow-x: auto; /* Adds horizontal scrolling for wide tables */
+        }
+        table {
+            border-collapse: collapse;
+            border: 2px solid black;
+            margin: auto;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr.low {
+            background-color: white; /* White */
+        }
+        tr.warning {
+            background-color: #e0ff33; /* Yellow */
+        }
+        tr.critical {
+            background-color: #ffa533; /* Orange */
+        }
+        tr.head {
+            background-color: #808B96; /* Gray */
+        }
+        tr.ok {
+            background-color: #90EE90; /* Light Green */
+        }
+        tr.normal {
+            background-color: white; /* White for normal ASM usage */
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Health check report for Non-Prod OEM 24ai AIX</h1>
+<h2 style="text-align: center;">ASM USAGE</h2>
+<table>
+    <tr class="head">
+        <th>STATUS</th>
+    </tr>
+    <tr class="ok">
+        <td style="text-align: center; padding: 20px; font-weight: bold;">Not Applicable for AIX Servers</td>
+    </tr>
+</table>
+<h2 style="text-align: center;">Tablespace Report - Need Attention </h2>
+<table>
+    <tr class="head">
+        <th>TARGET DB</th>
+        <th>TARGET Server</th>
+        <th>Tablespace (% Used)</th>
+    </tr>
+<tr class="ok"><td>DB050</td><td>aix-host-01.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB051</td><td>aix-host-07.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB008</td><td>aix-host-13.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB001</td><td>aix-host-18.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB002</td><td>aix-host-08.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB009</td><td>aix-host-14.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB012</td><td>aix-host-02.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="critical"><td>DB003</td><td>aix-host-03.example.com</td><td>TS065(91.87%), TS132(85.4%)</td></tr>
+<tr class="ok"><td>DB013</td><td>aix-host-04.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB039</td><td>aix-host-05.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB040</td><td>aix-host-11.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB041</td><td>aix-host-09.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB042</td><td>aix-host-15.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB043</td><td>aix-host-06.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB044</td><td>aix-host-12.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB045</td><td>aix-host-17.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB056</td><td>aix-host-10.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB057</td><td>aix-host-16.example.com</td><td>No tablespace used 85% above</td></tr>
+<tr class="ok"><td>DB060</td><td>aix-host-19.example.com</td><td>No tablespace used 85% above</td></tr>
+</table>
+<h2 style="text-align: center;">CPU Utilization </h2>
+<table>
+    <tr class="head">
+        <th>TARGET Server</th>
+        <th>CPU Utilization%</th>
+    </tr>
+<tr class="low"><td>aix-host-01.example.com</td><td>1.58%</td></tr>
+<tr class="low"><td>aix-host-07.example.com</td><td>1.7%</td></tr>
+<tr class="low"><td>aix-host-13.example.com</td><td>14.1%</td></tr>
+<tr class="low"><td>aix-host-18.example.com</td><td>1.71%</td></tr>
+<tr class="low"><td>aix-host-08.example.com</td><td>1.93%</td></tr>
+<tr class="low"><td>aix-host-14.example.com</td><td>1.52%</td></tr>
+<tr class="low"><td>aix-host-02.example.com</td><td>3.29%</td></tr>
+<tr class="low"><td>aix-host-03.example.com</td><td>3.17%</td></tr>
+<tr class="low"><td>aix-host-04.example.com</td><td>5.69%</td></tr>
+<tr class="low"><td>aix-host-05.example.com</td><td>6.93%</td></tr>
+<tr class="low"><td>aix-host-11.example.com</td><td>1.84%</td></tr>
+<tr class="low"><td>aix-host-09.example.com</td><td>1.51%</td></tr>
+<tr class="low"><td>aix-host-15.example.com</td><td>1.78%</td></tr>
+<tr class="low"><td>aix-host-06.example.com</td><td>2%</td></tr>
+<tr class="low"><td>aix-host-12.example.com</td><td>.63%</td></tr>
+<tr class="low"><td>aix-host-17.example.com</td><td>.72%</td></tr>
+<tr class="low"><td>aix-host-10.example.com</td><td>1.72%</td></tr>
+<tr class="low"><td>aix-host-16.example.com</td><td>2.22%</td></tr>
+<tr class="low"><td>aix-host-19.example.com</td><td>2.58%</td></tr>
+</table>
+<h2 style="text-align: center;">Database Growth - Last 7 Months (Including Current Month)</h2>
+<p style="margin: 10px auto; max-width: 80%; font-size: 12px; color: #666; text-align: left;">
+<strong>Note:</strong> Consistent 0% allocated growth in databases suggests good capacity planning (pre-allocated). 
+Variable used space growth is normal due to data purging, batch processing cycles, and transaction volume fluctuations.
+</p>
+<table>
+    <tr class="head">
+        <th>TARGET DB</th>
+        <th>TARGET Server</th>
+        <th>MONTH_DT</th>
+        <th>ALLOCATED_GB</th>
+        <th>USED_GB</th>
+        <th>ALLOCATED_GROWTH%</th>
+        <th>USED_GROWTH%</th>
+    </tr>
+<tr><td>DB050</td><td>aix-host-01.example.com</td><td>JAN-2026</td><td>40.35</td><td>9.2</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB050</td><td>aix-host-01.example.com</td><td>FEB-2026</td><td>40.35</td><td>9.2</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB051</td><td>aix-host-07.example.com</td><td>JAN-2026</td><td>63.95</td><td>7.36</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB051</td><td>aix-host-07.example.com</td><td>FEB-2026</td><td>63.95</td><td>7.36</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB008</td><td>aix-host-13.example.com</td><td>JAN-2026</td><td>677.46</td><td>356.09</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB008</td><td>aix-host-13.example.com</td><td>FEB-2026</td><td>684.99</td><td>365.24</td><td>1.11%</td><td>2.57%</td></tr>
+<tr><td>DB001</td><td>aix-host-18.example.com</td><td>JAN-2026</td><td>1522.48</td><td>900.09</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB001</td><td>aix-host-18.example.com</td><td>FEB-2026</td><td>1549.53</td><td>927.6</td><td>1.78%</td><td>3.06%</td></tr>
+<tr><td>DB002</td><td>aix-host-08.example.com</td><td>JAN-2026</td><td>57.08</td><td>4.86</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB002</td><td>aix-host-08.example.com</td><td>FEB-2026</td><td>58.22</td><td>4.87</td><td>2%</td><td>0%</td></tr>
+<tr><td>DB009</td><td>aix-host-14.example.com</td><td>JAN-2026</td><td>35.11</td><td>7.31</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB009</td><td>aix-host-14.example.com</td><td>FEB-2026</td><td>35.11</td><td>7.32</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB012</td><td>aix-host-02.example.com</td><td>FEB-2026</td><td>2028.07</td><td>748.2</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB003</td><td>aix-host-03.example.com</td><td>FEB-2026</td><td>801.46</td><td>231.11</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB013</td><td>aix-host-04.example.com</td><td>JAN-2026</td><td>110.14</td><td>3.55</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB013</td><td>aix-host-04.example.com</td><td>FEB-2026</td><td>110.14</td><td>3.55</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB039</td><td>aix-host-05.example.com</td><td>JAN-2026</td><td>159.98</td><td>73.24</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB039</td><td>aix-host-05.example.com</td><td>FEB-2026</td><td>159.98</td><td>73.27</td><td>0%</td><td>.04%</td></tr>
+<tr><td>DB040</td><td>aix-host-11.example.com</td><td>JAN-2026</td><td>177.36</td><td>69.7</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB040</td><td>aix-host-11.example.com</td><td>FEB-2026</td><td>177.36</td><td>69.8</td><td>0%</td><td>.14%</td></tr>
+<tr><td>DB041</td><td>aix-host-09.example.com</td><td>JAN-2026</td><td>55.71</td><td>38.57</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB041</td><td>aix-host-09.example.com</td><td>FEB-2026</td><td>55.71</td><td>38.57</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB042</td><td>aix-host-15.example.com</td><td>JAN-2026</td><td>25.59</td><td>13.25</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB042</td><td>aix-host-15.example.com</td><td>FEB-2026</td><td>25.59</td><td>13.24</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB043</td><td>aix-host-06.example.com</td><td>JAN-2026</td><td>54.64</td><td>13.21</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB043</td><td>aix-host-06.example.com</td><td>FEB-2026</td><td>54.64</td><td>13.23</td><td>0%</td><td>.15%</td></tr>
+<tr><td>DB044</td><td>aix-host-12.example.com</td><td>JAN-2026</td><td>139.63</td><td>115.49</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB044</td><td>aix-host-12.example.com</td><td>FEB-2026</td><td>156.14</td><td>115.5</td><td>11.82%</td><td>0%</td></tr>
+<tr><td>DB045</td><td>aix-host-17.example.com</td><td>JAN-2026</td><td>238.77</td><td>112.96</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB045</td><td>aix-host-17.example.com</td><td>FEB-2026</td><td>238.77</td><td>112.96</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB056</td><td>aix-host-10.example.com</td><td>JAN-2026</td><td>108.43</td><td>53.5</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB056</td><td>aix-host-10.example.com</td><td>FEB-2026</td><td>108.43</td><td>53.5</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB057</td><td>aix-host-16.example.com</td><td>JAN-2026</td><td>92.03</td><td>41.14</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB057</td><td>aix-host-16.example.com</td><td>FEB-2026</td><td>92.03</td><td>41.15</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB060</td><td>aix-host-19.example.com</td><td>JAN-2026</td><td>751.49</td><td>573</td><td>0%</td><td>0%</td></tr>
+<tr><td>DB060</td><td>aix-host-19.example.com</td><td>FEB-2026</td><td>751.49</td><td>575.7</td><td>0%</td><td>.47%</td></tr>
+</table>
+</body>
+</html>
